@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="sv">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Björklöven Fan-Hub</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;700;900&display=swap" rel="stylesheet">
+    <script>
+      // Global error tracker to show errors even if React fails
+      window.onerror = function(msg, url, lineNo, columnNo, error) {
+        const root = document.getElementById('root');
+        if (root && root.innerHTML.length < 50) {
+          root.innerHTML = `
+            <div style="background:#0a0a0a;color:#fff;padding:40px;font-family:sans-serif;height:100vh;display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;">
+              <h1 style="color:#FFD200;font-size:2rem;margin-bottom:1rem;">STARTUP ERROR</h1>
+              <p style="color:#888;max-width:500px;margin-bottom:2rem;">Applikationen kunde inte startas. Detta beror oftast på nätverksproblem eller tillfälliga fel hos våra script-leverantörer.</p>
+              <pre style="background:#000;padding:20px;border-radius:12px;color:#ff4444;font-size:12px;max-width:80vw;overflow:auto;border:1px solid #333;">${msg}</pre>
+              <button onclick="location.reload()" style="margin-top:2rem;background:#fff;color:#000;border:none;padding:12px 30px;border-radius:30px;font-weight:900;cursor:pointer;text-transform:uppercase;">Ladda om sidan</button>
+            </div>
+          `;
+        }
+        return false;
+      };
+
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: {
+              loven: {
+                green: '#005A31',
+                neonGreen: '#00ff88',
+                yellow: '#FFD200',
+                neonYellow: '#ffea00',
+                dark: '#050505',
+                card: '#0f0f0f',
+              }
+            },
+            fontFamily: { sans: ['Inter', 'sans-serif'] },
+            animation: {
+              'pulse-slow': 'pulse 4s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+              'fade-in': 'fadeIn 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards',
+              'scale-in': 'scaleIn 0.3s cubic-bezier(0.16, 1, 0.3, 1) forwards',
+            },
+            keyframes: {
+              fadeIn: {
+                'from': { opacity: '0', transform: 'translateY(10px)' },
+                'to': { opacity: '1', transform: 'translateY(0)' },
+              },
+              scaleIn: {
+                 'from': { opacity: '0', transform: 'scale(0.98)' },
+                 'to': { opacity: '1', transform: 'scale(1)' },
+              }
+            }
+          }
+        }
+      }
+    </script>
+    <style>
+      body { background-color: #050505; color: #ffffff; margin: 0; }
+      .bg-noise {
+        position: fixed; top: 0; left: 0; width: 100vw; height: 100vh;
+        pointer-events: none; z-index: 50; opacity: 0.03;
+        background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+      }
+      ::-webkit-scrollbar { width: 6px; }
+      ::-webkit-scrollbar-track { background: #050505; }
+      ::-webkit-scrollbar-thumb { background: #333; border-radius: 10px; }
+      ::-webkit-scrollbar-thumb:hover { background: #FFD200; }
+    </style>
+    <script type="importmap">
+{
+  "imports": {
+    "react": "https://esm.sh/react@18.2.0",
+    "react-dom": "https://esm.sh/react-dom@18.2.0",
+    "react-dom/client": "https://esm.sh/react-dom@18.2.0/client",
+    "lucide-react": "https://esm.sh/lucide-react@0.344.0?external=react",
+    "recharts": "https://esm.sh/recharts@2.12.0?bundle",
+    "@google/genai": "https://esm.sh/@google/genai@0.2.1",
+    "react-dom/": "https://esm.sh/react-dom@^19.2.3/",
+    "react/": "https://esm.sh/react@^19.2.3/"
+  }
+}
+</script>
+  </head>
+  <body>
+    <div id="root"></div>
+    <div class="bg-noise"></div>
+  </body>
+</html>
